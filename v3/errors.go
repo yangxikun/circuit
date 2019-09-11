@@ -11,6 +11,7 @@ type circuitError struct {
 	circuitOpen             bool
 	msg                     string
 }
+
 var _ Error = &circuitError{}
 
 // Error is the type of error returned by internal errors using the circuit library.
@@ -68,6 +69,34 @@ func (s SimpleBadRequest) Error() string {
 // BadRequest always returns true
 func (s SimpleBadRequest) BadRequest() bool {
 	return true
+}
+
+type ErrTimeout interface {
+	ErrTimeout() bool
+}
+
+type SimpleErrTimeout struct {
+	Err error
+}
+
+func (s SimpleErrTimeout) Cause() error {
+	return s.Err
+}
+
+func (s SimpleErrTimeout) Error() string {
+	return s.Err.Error()
+}
+
+func (s SimpleErrTimeout) ErrTimeout() bool {
+	return true
+}
+
+func IsErrTimeout(err error) bool {
+	if err == nil {
+		return false
+	}
+	er, ok := err.(ErrTimeout)
+	return ok && er.ErrTimeout()
 }
 
 var _ error = &SimpleBadRequest{}

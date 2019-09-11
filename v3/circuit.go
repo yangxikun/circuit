@@ -305,7 +305,7 @@ func (c *Circuit) run(ctx context.Context, runFunc func(context.Context) error) 
 
 	// Even if there is no error (or if there is an error), if the request took too long it is always an error for the
 	// circuit.  Note that ret *MAY* actually be nil.  In that case, we still want to return nil.
-	if c.checkErrTimeout(expectedDoneBy, runFuncDoneTime, totalCmdTime) {
+	if c.checkErrTimeout(ret, expectedDoneBy, runFuncDoneTime, totalCmdTime) {
 		// Note: ret could possibly be nil.  We will still return nil, but the circuit will consider it a failure.
 		return ret
 	}
@@ -361,9 +361,9 @@ func (c *Circuit) checkErrFailure(ret error, runFuncDoneTime time.Time, totalCmd
 	return false
 }
 
-func (c *Circuit) checkErrTimeout(expectedDoneBy time.Time, runFuncDoneTime time.Time, totalCmdTime time.Duration) bool {
+func (c *Circuit) checkErrTimeout(ret error, expectedDoneBy time.Time, runFuncDoneTime time.Time, totalCmdTime time.Duration) bool {
 	// I don't use the deadline from the context because it could be a smaller timeout from the parent context
-	if !expectedDoneBy.IsZero() && expectedDoneBy.Before(runFuncDoneTime) {
+	if IsErrTimeout(ret) || !expectedDoneBy.IsZero() && expectedDoneBy.Before(runFuncDoneTime) {
 		c.CmdMetricCollector.ErrTimeout(runFuncDoneTime, totalCmdTime)
 		if !c.IsOpen() {
 			c.attemptToOpen(runFuncDoneTime)
