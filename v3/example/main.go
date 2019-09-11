@@ -17,10 +17,10 @@ import (
 
 	"flag"
 
-	"github.com/cep21/circuit/v3"
-	"github.com/cep21/circuit/v3/closers/hystrix"
-	"github.com/cep21/circuit/v3/metriceventstream"
-	"github.com/cep21/circuit/v3/metrics/rolling"
+	"github.com/yangxikun/circuit/v3"
+	"github.com/yangxikun/circuit/v3/closers/hystrix"
+	"github.com/yangxikun/circuit/v3/metriceventstream"
+	"github.com/yangxikun/circuit/v3/metrics/rolling"
 )
 
 // nolint:lll

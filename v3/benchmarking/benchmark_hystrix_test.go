@@ -12,14 +12,14 @@ import (
 	"time"
 
 	gohystrix "github.com/afex/hystrix-go/hystrix"
-	"github.com/cep21/circuit/v3"
-	"github.com/cep21/circuit/v3/closers/hystrix"
-	"github.com/cep21/circuit/v3/closers/simplelogic"
-	"github.com/cep21/circuit/v3/metrics/rolling"
 	iandCircuit "github.com/iand/circuit"
 	circuitbreaker "github.com/rubyist/circuitbreaker"
 	"github.com/sony/gobreaker"
 	"github.com/streadway/handy/breaker"
+	"github.com/yangxikun/circuit/v3"
+	"github.com/yangxikun/circuit/v3/closers/hystrix"
+	"github.com/yangxikun/circuit/v3/closers/simplelogic"
+	"github.com/yangxikun/circuit/v3/metrics/rolling"
 )
 
 type circuitConfigs struct {
@@ -47,7 +47,7 @@ func BenchmarkCiruits(b *testing.B) {
 	passesParam := []bool{true, false}
 	impls := []circuitImpls{
 		{
-			name:   "cep21-circuit",
+			name:   "yangxikun-circuit",
 			runner: circuitRunner,
 			configs: []circuitConfigs{
 				{

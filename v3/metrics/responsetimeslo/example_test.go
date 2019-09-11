@@ -3,8 +3,8 @@ package responsetimeslo_test
 import (
 	"time"
 
-	"github.com/cep21/circuit/v3"
-	"github.com/cep21/circuit/v3/metrics/responsetimeslo"
+	"github.com/yangxikun/circuit/v3"
+	"github.com/yangxikun/circuit/v3/metrics/responsetimeslo"
 )
 
 // This example creates a SLO tracker that counts failures at less than 20 ms.  You

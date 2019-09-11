@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/cep21/circuit/v3"
-	"github.com/cep21/circuit/v3/closers/hystrix"
+	"github.com/yangxikun/circuit/v3"
+	"github.com/yangxikun/circuit/v3/closers/hystrix"
 )
 
 // This example configures the circuit to use Hystrix open/close logic with the default Hystrix parameters

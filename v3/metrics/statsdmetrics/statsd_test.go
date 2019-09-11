@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cep21/circuit/v3"
-	"github.com/cep21/circuit/v3/internal/clock"
-	"github.com/cep21/circuit/v3/metrics/responsetimeslo"
 	"github.com/stretchr/testify/require"
+	"github.com/yangxikun/circuit/v3"
+	"github.com/yangxikun/circuit/v3/internal/clock"
+	"github.com/yangxikun/circuit/v3/metrics/responsetimeslo"
 )
 
 type rememberStats struct {

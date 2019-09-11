@@ -3,8 +3,8 @@ package simplelogic
 import (
 	"time"
 
-	"github.com/cep21/circuit/v3"
-	"github.com/cep21/circuit/v3/faststats"
+	"github.com/yangxikun/circuit/v3"
+	"github.com/yangxikun/circuit/v3/faststats"
 )
 
 // ConsecutiveErrOpener is simple closed->open logic that opens on consecutive error counts

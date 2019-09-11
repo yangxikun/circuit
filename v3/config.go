@@ -3,7 +3,7 @@ package circuit
 import (
 	"time"
 
-	"github.com/cep21/circuit/v3/faststats"
+	"github.com/yangxikun/circuit/v3/faststats"
 )
 
 // Config controls how a circuit operates
@@ -48,7 +48,7 @@ type ExecutionConfig struct {
 	// Normally if the parent context is canceled before a timeout is reached, we don't consider the circuit
 	// unhealth.  Set this to true to consider those circuits unhealthy.
 	// Note: This is a typo: Should be renamed as IgnoreInterrupts.  Tracking this in
-	//       https://github.com/cep21/circuit/issues/39
+	//       https://github.com/yangxikun/circuit/issues/39
 	IgnoreInterrupts bool `json:",omitempty"`
 }
 

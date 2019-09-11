@@ -11,8 +11,8 @@ import (
 	"net/http/httptest"
 	"time"
 
-	"github.com/cep21/circuit/v3"
-	"github.com/cep21/circuit/v3/metrics/rolling"
+	"github.com/yangxikun/circuit/v3"
+	"github.com/yangxikun/circuit/v3/metrics/rolling"
 )
 
 // This is a full example of using a circuit around HTTP requests.
